@@ -1,20 +1,19 @@
-describe ("static", function() {
+describe("static", function() {
 
-    it ("allows to define a static properties for a class", function() {
+    it("allows to define a static properties for a class", function() {
         class Character {
 
-            constructor () {
+            constructor() {}
+
+            static staticMethod() {
+                return "This is a static method"
             }
 
-            __ staticMethod () {
-              return "This is a static method"
-            }
+        }
 
-          }
+        expect(Character.staticMethod()).toEqual("This is a static method") // we can access a static property using the class name
 
-          expect(__.staticMethod()).toEqual(__)    // we can access a static property using the class name
-
-          const warrior = new Character()
-          expect(warrior.staticMethod).toBe__()   // static methods are not defined for instances of the class
-        })
-  })
+        const warrior = new Character()
+        expect(warrior.staticMethod).toBeUndefined() // static methods are not defined for instances of the class
+    })
+})
